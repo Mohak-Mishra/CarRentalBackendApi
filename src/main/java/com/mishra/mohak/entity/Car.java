@@ -4,29 +4,28 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table
 @NoArgsConstructor
 @AllArgsConstructor
-public class Car {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer carId;
+public class Car extends BaseEntity {
 
-    private String carName;
+
 
     private String carBrand;
 
     private String carGear;
 
-    private String carColor;
+    @ElementCollection
+    private List<String> carColor;
 
     private String carType;
 
@@ -34,13 +33,20 @@ public class Car {
 
     private boolean carAvailable;
 
-    private String pickUp;
+
+    private String location;
 
 
     private Integer noOfSeats;
 
+
+    @Column(columnDefinition = "LONGBLOB")
+    @ElementCollection
+    private List<Byte[]> images;
+
+
     @ManyToOne
-    @JoinColumn(name = "adminId",referencedColumnName = "adminId")
+    @JoinColumn(name = "adminId")
     private Admin admin;
 
 

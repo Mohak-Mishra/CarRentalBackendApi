@@ -4,20 +4,19 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Admin {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer adminId;
-    private String adminName;
+public class Admin extends BaseEntity {
+
+
     @NotBlank
     private String adminPassword;
     @Column(unique=true)
