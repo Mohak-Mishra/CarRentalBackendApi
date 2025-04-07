@@ -19,6 +19,7 @@ public class Admin extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer adminId;
+    private String adminName;
     @NotBlank
     private String adminPassword;
     @Column(unique=true)

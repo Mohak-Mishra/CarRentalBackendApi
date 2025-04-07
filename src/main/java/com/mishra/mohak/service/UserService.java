@@ -17,7 +17,7 @@ public class UserService implements IUserService {
 
     @Override
     public void updateUser(User user) {
-        if(userRepo.existsById(user.getId())) {
+        if(userRepo.existsById(user.getUserId())) {
             userRepo.save(user);
         }
         else{

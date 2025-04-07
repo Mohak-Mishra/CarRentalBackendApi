@@ -42,7 +42,7 @@ public class CarService implements ICarService {
 
     @Override
     public Car getCarByName(String name) {
-        Car c=carRepo.findByName(name);
+        Car c=carRepo.findByCarName(name);
         if(c==null) {throw new CarNotFoundException("Car not found");}
         return c;
     }

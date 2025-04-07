@@ -38,6 +38,6 @@ public class BookingService implements Serializable ,IBookingService {
 
     @Override
     public Booking showBooking(User user) {
-       return bookingRepo.findBookingByUserId(user.getUserId());
+       return bookingRepo.findBookingByUser(user);
     }
 }
