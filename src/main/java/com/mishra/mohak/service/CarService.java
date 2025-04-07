@@ -30,7 +30,7 @@ public class CarService implements ICarService {
 
     @Override
     public void updateCar(Car car) {
-        Car c=getCarById(car.getId());
+        Car c=getCarById(car.getCarId());
         carRepo.save(c);
     }
 

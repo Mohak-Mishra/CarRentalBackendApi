@@ -16,7 +16,9 @@ import java.util.List;
 @AllArgsConstructor
 public class Admin extends BaseEntity {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer adminId;
     @NotBlank
     private String adminPassword;
     @Column(unique=true)

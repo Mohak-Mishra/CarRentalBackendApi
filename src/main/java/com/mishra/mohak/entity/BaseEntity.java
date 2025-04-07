@@ -12,10 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @MappedSuperclass
 public class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
+
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
     private String createdBy;

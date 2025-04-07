@@ -11,8 +11,10 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class User extends BaseEntity {
-
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer userId;
+    private String userName;
     private String userPassword;
     private String userEmail;
     private String userPhone;

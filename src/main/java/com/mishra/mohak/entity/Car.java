@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.cache.annotation.EnableCaching;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -16,9 +18,11 @@ import java.util.Set;
 @Table
 @NoArgsConstructor
 @AllArgsConstructor
-public class Car extends BaseEntity {
-
-
+public class Car extends BaseEntity implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer carId;
+    private String carName;
 
     private String carBrand;
 
