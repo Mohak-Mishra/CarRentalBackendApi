@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -23,5 +24,5 @@ public class User extends BaseEntity {
     private String city;
 
     @ManyToMany(mappedBy = "users")
-    private Set<Car> cars;
+    private List<Car> cars;
 }
