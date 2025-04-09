@@ -3,6 +3,7 @@ package com.mishra.mohak.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.cache.annotation.EnableCaching;
 
@@ -13,8 +14,8 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Booking implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class Booking extends BaseEntity implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

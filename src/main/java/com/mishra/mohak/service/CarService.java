@@ -6,6 +6,7 @@ import com.mishra.mohak.repo.CarRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class CarService implements ICarService {
@@ -15,6 +16,7 @@ public class CarService implements ICarService {
 
     @Override
     public void insertCar(Car car) {
+        car.setCreatedAt(LocalDateTime.now());
         carRepo.save(car);
     }
 
@@ -30,8 +32,15 @@ public class CarService implements ICarService {
 
     @Override
     public void updateCar(Car car) {
-        Car c=getCarById(car.getCarId());
-        carRepo.save(c);
+        if(carRepo.existsById(car.getCarId())){
+            car.setLastModifiedAt(LocalDateTime.now());
+            Car c=getCarById(car.getCarId());
+            carRepo.save(c);
+        }
+        else{
+            throw new CarNotFoundException("Car not found");
+        }
+
     }
 
     @Override

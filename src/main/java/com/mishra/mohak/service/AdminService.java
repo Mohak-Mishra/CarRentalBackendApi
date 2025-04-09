@@ -7,6 +7,7 @@ import com.mishra.mohak.repo.AdminRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -20,6 +21,7 @@ public class AdminService implements IAdminService {
 
     @Override
     public void saveAdmin(Admin admin) {
+        admin.setCreatedAt(LocalDateTime.now());
         adminRepo.save(admin);
     }
 
@@ -31,7 +33,11 @@ public class AdminService implements IAdminService {
 
     @Override
     public void updateAdmin(Admin admin) {
-        if(adminRepo.existsById(admin.getAdminId())) adminRepo.save(admin);
+
+        if(adminRepo.existsById(admin.getAdminId())){
+            admin.setLastModifiedAt(LocalDateTime.now());
+            adminRepo.save(admin);
+        }
         else throw new AdminNotFoundException("admin not found");
     }
 

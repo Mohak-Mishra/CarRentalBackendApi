@@ -20,8 +20,4 @@ public class BaseEntity {
     private LocalDateTime createdAt;
     @LastModifiedDate
     private LocalDateTime lastModifiedAt;
-    @CreatedBy
-    private String createdBy;
-    @LastModifiedBy
-    private String lastModifiedBy;
 }
